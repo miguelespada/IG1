@@ -3145,7 +3145,7 @@ fi
 				<key>isa</key>
 				<string>PBXNativeTarget</string>
 				<key>name</key>
-				<string>emptyExample</string>
+				<string>0_helloWorld</string>
 				<key>productName</key>
 				<string>myOFApp</string>
 				<key>productReference</key>
@@ -3162,7 +3162,7 @@ fi
 				<key>isa</key>
 				<string>PBXFileReference</string>
 				<key>path</key>
-				<string>emptyExampleDebug.app</string>
+				<string>0_helloWorldDebug.app</string>
 				<key>sourceTree</key>
 				<string>BUILT_PRODUCTS_DIR</string>
 			</dict>
