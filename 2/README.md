@@ -12,3 +12,9 @@
 
 * Importancia del orden de las trasnformación
 
+
+# Objects
+
+### Objetivos
+
+* Encapsular objectos en clases
