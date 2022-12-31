@@ -4,6 +4,14 @@
 void ofApp::setup(){
     ofSetBackgroundAuto(true);
     ofSetBackgroundColor(0);
+    ofSetFrameRate(30);
+    
+    gui.setup();
+
+    gui.add(angle.set("angle", 0, 0, 360));
+    gui.add(scale.set("scale", 1, -10, 10));
+    
+    
     points.push_back(glm::vec4(0,0,0,1));
     points.push_back(glm::vec4(0,100,0,1));
     points.push_back(glm::vec4(100,100,0,1));
@@ -11,27 +19,25 @@ void ofApp::setup(){
     
     matrix = glm::mat4x4(1.0);
     matrix = glm::translate(matrix, glm::vec3(ofGetWidth()/2,  ofGetHeight()/2, 0));
-    matrix = glm::scale(matrix, glm::vec3(2, 2, 1));
+    matrix = glm::scale(matrix, glm::vec3(scale.get(), scale.get(), 1));
     cout << matrix << endl;
     
     cout << "-----" << endl;
     
     matrix_1 = glm::mat4x4(1.0);
-    float angle = 30;
-    matrix_1 = glm::rotate(matrix_1, glm::radians(angle), glm::vec3(0, 0, 1));
+    matrix_1 = glm::rotate(matrix_1, glm::radians(angle.get()), glm::vec3(0, 0, 1));
 
     cout << matrix_1 << endl;
     cout << "-----" << endl;
     
     matrix_1 = glm::mat4x4(1.0);
-    matrix_1[0][0] = glm::cos(glm::radians(angle)) ;
-    matrix_1[1][1] = glm::cos(glm::radians(angle)) ;
-    matrix_1[0][1] = glm::sin(glm::radians(angle)) ;
-    matrix_1[1][0] = -glm::sin(glm::radians(angle)) ;
+    matrix_1[0][0] = glm::cos(glm::radians(angle.get())) ;
+    matrix_1[1][1] = glm::cos(glm::radians(angle.get())) ;
+    matrix_1[0][1] = glm::sin(glm::radians(angle.get())) ;
+    matrix_1[1][0] = -glm::sin(glm::radians(angle.get())) ;
     
     cout << matrix_1 << endl;
     cout << "-----" << endl;
-    ofSetFrameRate(30);
     
 }
 
@@ -40,12 +46,11 @@ void ofApp::update(){
     
     matrix_1 = glm::mat4x4(1.0);
     matrix_1 = glm::translate(matrix_1, glm::vec3(ofGetWidth()/2, ofGetHeight()/2, 0));
-    matrix_1 = glm::scale(matrix_1, glm::vec3(2, 2, 1));
+    matrix_1 = glm::scale(matrix_1, glm::vec3(scale.get(), scale.get(), 1));
     
-    float angle = ofGetFrameNum() % 360;
     
     // Calculate matrix using glm rotations
-    matrix_1 = glm::rotate(matrix_1, glm::radians(angle), glm::vec3(0, 0, 1));
+    matrix_1 = glm::rotate(matrix_1, glm::radians(angle.get()), glm::vec3(0, 0, 1));
     
     // NOTE: we can calculate the matrix manually
 //    glm::mat4x4 rotMat = glm::mat4x4(1.0);
@@ -61,6 +66,7 @@ void ofApp::update(){
 }
 //--------------------------------------------------------------
 void ofApp::draw(){
+    gui.draw();
     ofSetColor(255);
 
     
@@ -83,11 +89,10 @@ void ofApp::draw(){
     
     ofSetColor(255, 255, 0);
     
-    float angle = ofGetFrameNum() % 360;
     ofPushMatrix();
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
-    ofScale(0.5, 0.5, 1);
-    ofRotateZDeg(angle);
+    ofScale(scale.get()/2, scale.get()/2, 1);
+    ofRotateZDeg(360 - angle);
     ofTranslate(-50, -50);
     ofBeginShape();
     for(auto p: points){

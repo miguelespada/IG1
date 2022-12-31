@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 	public:
@@ -25,4 +26,8 @@ class ofApp : public ofBaseApp{
     
     glm::mat4x4 matrix_1;
     vector<glm::vec4> points;
+    
+    ofxPanel gui;
+    ofParameter<float> angle;
+    ofParameter<float> scale;
 };
