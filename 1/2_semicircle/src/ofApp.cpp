@@ -2,35 +2,28 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetBackgroundAuto(false);
-    ofSetBackgroundColor(0);
+    ofSetBackgroundColor(255);
+    ofSetVerticalSync(true);
     ofSetFrameRate(30);
-    
-    for(int i = 0; i < 100; i ++){
-        float x = ofRandom(ofGetWidth());
-        float y = ofRandom(ofGetWidth());
-        float size = ofRandom(10, 200);
-        objects.push_back(new MyObject(glm::vec3(x, y, 0), size));
-    }
-    
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    for(auto o: objects)
-        o->update();
 }
-
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for(auto o: objects)
-        o->draw();
+    ofSetColor(255, 0, 0, 125);
+    drawCircle(400, 400, 200, 90, 270);
+    
+    ofSetColor(255, 255, 0, 125);
+    drawCircle(390, 400, 200, 270, 360+90);
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    
+   
 
 }
 
@@ -82,4 +75,16 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+
+void  ofApp::drawCircle(int x, int y, int r, int angleInit, int angleEnd){
+
+    ofBeginShape();
+    for(float angle = angleInit; angle <= angleEnd; angle ++){
+        float px = x + r * cos(ofDegToRad(angle));
+        float py = y + r * sin(ofDegToRad(angle));
+        ofVertex(px, py);
+    }
+    ofEndShape();
 }

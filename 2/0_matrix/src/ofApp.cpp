@@ -89,6 +89,9 @@ void ofApp::draw(){
     
     ofSetColor(255, 255, 0);
     
+    
+    // ofLoadMatrix
+    
     ofPushMatrix();
     ofTranslate(ofGetWidth()/2, ofGetHeight()/2);
     ofScale(scale.get()/2, scale.get()/2, 1);

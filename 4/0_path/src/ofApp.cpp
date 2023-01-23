@@ -2,30 +2,58 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetBackgroundAuto(false);
+    ofSetBackgroundAuto(true);
     ofSetBackgroundColor(0);
-    ofSetFrameRate(30);
+    gui.setup();
+    gui.add(pct.set("pct", 0, 0, 1));
     
-    for(int i = 0; i < 100; i ++){
-        float x = ofRandom(ofGetWidth());
-        float y = ofRandom(ofGetWidth());
-        float size = ofRandom(10, 200);
-        objects.push_back(new MyObject(glm::vec3(x, y, 0), size));
-    }
+//        path.moveTo(20,20);
+//       path.lineTo(100,100);
+//       path.lineTo(200,100);
+//       path.lineTo(200,400);
+       path.setStrokeColor(ofColor::blue);
+//       path.setFillColor(ofColor::red);
+       path.setFilled(false);
+       path.setStrokeWidth(2);
     
+
+//    for( int i = 0; i < 5; i++) {
+//        path.arc( i * 50 + 20, i * 50 + 20, i * 40 + 10, i * 40 + 10, 0, 360); // creates a new ofSubPath
+//        path.close();
+//    }
+    
+    path.moveTo(ofPoint(200, 400));
+    path.bezierTo(100, 100, 800, 100, 700, 400);
+    
+    
+    polyline.lineTo(100,100);
+    polyline.lineTo(400,200);
+    polyline.lineTo(300,400);
+    polyline.lineTo(80,20);
+    i = 0;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    for(auto o: objects)
-        o->update();
+    
+    
+    i += 1;
+    if(i > polyline.getLengthAtIndex(4)) i = 0;
+   
+    
 }
-
-
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for(auto o: objects)
-        o->draw();
+    path.draw();
+    gui.draw();
+    
+    
+    ofPoint centroid = polyline.getCentroid2D();
+    
+    polyline.draw();
+  
+    ofPoint p = polyline.getPointAtPercent(pct);
+    ofDrawCircle(p,5);
 }
 
 //--------------------------------------------------------------

@@ -31,6 +31,19 @@
 * frameRate y vertical sync
 
 
+# Semicircle
+
+### Objetivos
+
+* Hacer una circulo a mano
+* Hacer un arco
+* Uso de cos, sin
+* Encapsular en una función
+
+### Concepto importante
+
+* circle resolution
+
 # Ejercicio Star
 
 Hacer una estrella cuando pulsemos en un punto, usando senos, cosenos, ofRandom...

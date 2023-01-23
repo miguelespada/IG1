@@ -2,30 +2,32 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetBackgroundAuto(false);
+    ofSetBackgroundAuto(true);
     ofSetBackgroundColor(0);
     ofSetFrameRate(30);
-    
-    for(int i = 0; i < 100; i ++){
-        float x = ofRandom(ofGetWidth());
-        float y = ofRandom(ofGetWidth());
-        float size = ofRandom(10, 200);
-        objects.push_back(new MyObject(glm::vec3(x, y, 0), size));
-    }
+    shader.load("shadersGL3/shader");
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    for(auto o: objects)
-        o->update();
+    
+
+    
+    
 }
-
-
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for(auto o: objects)
-        o->draw();
+    
+    shader.begin();
+    shader.setUniform1f("value", value.get());
+    ofBeginShape();
+    ofVertex(400, 0);
+    ofVertex(0, 400);
+    ofVertex(800, 400);
+    ofEndShape();
+    
+    shader.end();
 }
 
 //--------------------------------------------------------------
