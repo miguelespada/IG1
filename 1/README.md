@@ -44,6 +44,18 @@
 
 * circle resolution
 
+# Points
+
+### Objetivos
+
+* Hacer un triangulo
+* Entender el modo GL_TRIANGLE_STRIP
+* Ver wireframe
+
+### Concepto importante
+
+* modos GL
+
 # Ejercicio Star
 
 Hacer una estrella cuando pulsemos en un punto, usando senos, cosenos, ofRandom...
