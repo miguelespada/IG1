@@ -1,23 +1,47 @@
 #include "ofApp.h"
 
+using namespace glm;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
-
+    ofSetVerticalSync(true);
+    ofBackground(ofColor::white);
+    ofSetBackgroundAuto(true);
+    
+    ofRectangle r;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
+    if(ofGetMousePressed()){
+        myRects.push_back(vec2(mouseX, mouseY));
+    }
+//    
+//    myRects.push_back(glm::vec2(ofGetWidth()/2, abs(sin(ofDegToRad(ofGetFrameNum() % 360))) * ofGetHeight()) );
+//    
+    if(myRects.size()> 100)
+        myRects.pop_front();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofDrawBitmapString("hello world", mouseX, mouseY);
+    ofNoFill();
+    float t = 10;
+    for(auto r: myRects){
+        ofDrawCircle(r.x, r.y, t);
+        t += 2;
+        ofSetColor(255, 0, 0, 80);
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    switch(key){
+        case 'c':
+            break;
+            
+    }
 }
 
 //--------------------------------------------------------------

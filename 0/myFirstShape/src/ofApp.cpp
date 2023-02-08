@@ -2,32 +2,43 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofBackground(255);
-    ofSetCircleResolution(100);
-    c = 0;
-    ofSetVerticalSync(true);
+
+    y = 0;
+    inc = 1;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    c = (c + 1) % 255;
+    y += inc;
+    
+    y = y % ofGetHeight();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+   
+    ofSetColor(255,0,255);
+    ofBeginShape();
+    ofVertex(50, 50);
+    ofVertex(150, 50);
+    ofVertex(150, 150);
+    ofEndShape();
     
-    ofSetColor(ofColor::mediumVioletRed);
-    ofDrawCircle(ofGetWidth()/2, ofGetHeight()/2, 300);
-        
-    ofSetColor(0, 0, 255, 125);
-    ofDrawCircle(mouseX, mouseY, 300);
     
     
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-   
+    switch(key){
+        case 'a':
+            inc += 1;
+            break;
+        case 'z':
+            inc -= 1;
+            break;
+            
+    }
 
 }
 
@@ -37,7 +48,7 @@ void ofApp::keyReleased(int key){
 }
 
 //--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y){
+void ofApp::mouseMoved(int x, int y ){
 
 }
 
@@ -79,16 +90,4 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
-}
-
-
-void  ofApp::drawCircle(int x, int y, int r, int angleInit, int angleEnd){
-
-    ofBeginShape();
-    for(float angle = angleInit; angle <= angleEnd; angle ++){
-        float px = x + r * cos(ofDegToRad(angle));
-        float py = y + r * sin(ofDegToRad(angle));
-        ofVertex(px, py);
-    }
-    ofEndShape();
 }

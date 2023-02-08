@@ -3,11 +3,19 @@
 
 //========================================================================
 int main( ){
-	ofSetupOpenGL(800,800,OF_WINDOW);			// <-------- setup the GL context
+        ofGLFWWindowSettings settings;
+        settings.setGLVersion(4, 1);
+    
+        settings.setPosition(glm::vec2(0, 0));
+        settings.multiMonitorFullScreen = true;
+        settings.doubleBuffering = true;
+        settings.setSize(800, 800);
+        ofCreateWindow(settings);
 
-	// this kicks off the running of my app
-	// can be OF_WINDOW or OF_FULLSCREEN
-	// pass in width and height too:
+        ofRunApp(new ofApp());
+    
+    
+	
 	ofRunApp(new ofApp());
 
 }

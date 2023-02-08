@@ -3,7 +3,9 @@
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp{
-
+    
+        int y;
+    int inc;
 	public:
 		void setup();
 		void update();
@@ -22,6 +24,5 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
     
-        deque<glm::vec2> myRects;
 		
 };
