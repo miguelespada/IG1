@@ -6,7 +6,7 @@ class ofApp : public ofBaseApp{
 
    
     enum States {
-        waiting, shapes, result
+        waiting, shapes, result, finalScore
     };
     
 public:
@@ -25,4 +25,13 @@ public:
     float reactionTime;
     
     ofTrueTypeFont    myFont;
+    
+    int randomColors[2];
+    int randomShapes[2];
+    
+    void drawShapes();
+    
+    int playerScores[2];
+    
+    bool isAMatch();
 };
