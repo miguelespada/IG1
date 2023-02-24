@@ -10,6 +10,6 @@ vec4 pos;
 
 void main(){
 	val = value;
-    pos = position + vec4(value, 0.0, 0.0, 0.0);
-	gl_Position = modelViewProjectionMatrix * position;
+    pos = position + vec4(0.0, 0.0, 0.0, 0.0);
+	gl_Position = modelViewProjectionMatrix * pos;
 }
