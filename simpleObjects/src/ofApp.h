@@ -1,17 +1,18 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGui.h"
+#include "GameObject.hpp"
 
 class ofApp : public ofBaseApp{
+
 	public:
 		void setup();
 		void update();
 		void draw();
-		
+
 		void keyPressed(int key);
 		void keyReleased(int key);
-		void mouseMoved(int x, int y);
+		void mouseMoved(int x, int y );
 		void mouseDragged(int x, int y, int button);
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
@@ -20,13 +21,7 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		
     
-    ofPath path;
-    float i;
-    
-    ofPolyline polyline;
-   
-    ofxPanel gui;
-    ofParameter<float> pct;
-    
+    vector<GameObject *> gameObjects;
 };

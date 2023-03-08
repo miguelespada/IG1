@@ -21,12 +21,10 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
     
-    ofPath path;
-    float i;
-    
-    ofPolyline polyline;
    
     ofxPanel gui;
-    ofParameter<float> pct;
+    ofParameter<int>  v;
+    float y, prevY;
     
+    ofPolyline polyline;
 };
