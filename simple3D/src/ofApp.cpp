@@ -1,31 +1,50 @@
 #include "ofApp.h"
-#include "Enemy.hpp"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    for(int i = 0; i < 10; i ++){
-        int x = ofRandom(ofGetWidth());
-        int y = 0;
-        gameObjects.push_back(new Enemy(x, y));
-    }
-    for(int i = 0; i < 10; i ++){
-        int x = ofRandom(ofGetWidth());
-        int y = 0;
-        gameObjects.push_back(new GameObject(x, y));
-    }
+
+    plane.set(3000, 3000);
+    plane.rotateDeg(-90, 1, 0, 0);
+    plane.move(0, -50.5, 0);
+    material.setDiffuseColor(ofColor::green);
+    roadMaterial.setDiffuseColor(ofColor::gray);
+    
+    light.setup();
+    light.setPosition(-200, 200, 200);
+    light.setDiffuseColor(ofColor::white);
+    light.enable();
+    
+    ofEnableDepthTest();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    for(auto go: gameObjects)
-        go->update();
     
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for(auto go: gameObjects)
-        go->draw();
+    
+    ofEnableLighting();
+    cam.begin();
+    
+    material.begin();
+  //  box.draw();
+    box.drawWireframe();
+   // box.drawAxes(50);
+     material.end();
+    
+    roadMaterial.begin();
+   // plane.draw();
+    plane.drawWireframe();
+    plane.drawAxes(100);
+    
+    roadMaterial.end();
+    
+    
+    
+    light.draw();
+    cam.end();
 }
 
 //--------------------------------------------------------------
