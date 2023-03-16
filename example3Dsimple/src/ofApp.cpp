@@ -53,7 +53,6 @@ void ofApp::update(){
     }
     
     
-    cout << box.getZAxis()  << endl;
     
 }
 
