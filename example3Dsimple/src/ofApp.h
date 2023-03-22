@@ -7,7 +7,10 @@ class ofApp : public ofBaseApp{
 	public:
 		void setup();
 		void update();
-		void draw();
+    void draw();
+    
+    
+    void drawScene();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -23,6 +26,8 @@ class ofApp : public ofBaseApp{
 		
     
     ofEasyCam cam;
+    ofEasyCam ceilCam;
+    
     ofBoxPrimitive box;
     ofPlanePrimitive plane;
     
@@ -34,4 +39,12 @@ class ofApp : public ofBaseApp{
     float speed;
     
     ofLight faro1;
+    
+    ofImage img;
+    ofTexture texture;
+    
+    
+    ofFbo fbo;
+    
+
 };
