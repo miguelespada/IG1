@@ -45,6 +45,7 @@ void Player::draw(){
     }
     material.end();
 }
+
 void Player::drawDebug(){
     collider.drawWireframe();
     transform.transformGL();

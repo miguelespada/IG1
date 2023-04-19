@@ -2,9 +2,7 @@
 #include "GameObject.h"
 
 
-GameObjectContainer::GameObjectContainer(){
-    
-}
+GameObjectContainer::GameObjectContainer(){}
 
 void GameObjectContainer::add(GameObject* g){
     gameObjects.push_back(g);
@@ -51,14 +49,12 @@ void GameObjectContainer::removeDead(){
     gameObjects = alive;
 }
 
-
 void GameObjectContainer::clear(){
     for(auto g: gameObjects){
         delete g;
     }
     gameObjects.clear();
 }
-
 
 vector<GameObject *> GameObjectContainer::getCollisions(GameObject *gameObject){
     vector<GameObject *> collisions;

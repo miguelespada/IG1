@@ -21,4 +21,4 @@ public:
     void clear();
     vector<GameObject *> getCollisions(GameObject *gameObject);
 };
-#endif /* GameObjectContainer_hpp */
+#endif 

@@ -1,10 +1,3 @@
-//
-//  Road.h
-//  P2_template
-//
-//  Created by Miguel Valero Espada on 18/4/23.
-//
-
 #ifndef Road_h
 #define Road_h
 

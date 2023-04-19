@@ -1,10 +1,3 @@
-//
-//  Player.hpp
-//  P2_template
-//
-//  Created by Miguel Valero Espada on 16/4/23.
-//
-
 #ifndef Player_hpp
 #define Player_hpp
 
@@ -41,7 +34,6 @@ public:
     void brake();
     void stop();
     
-
 };
 
-#endif /* Player_hpp */
+#endif 
