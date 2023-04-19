@@ -14,6 +14,7 @@ class Player : public GameObject{
     float speed;
     bool bLight;
     glm::vec3 prevPos;
+    int coins;
     
 public:
     
@@ -33,7 +34,8 @@ public:
     void toggleLight();
     void brake();
     void stop();
-    
+    void addCoins(int n = 1);
+    int getCoins();
 };
 
 #endif 

@@ -13,6 +13,8 @@ Player::Player(Game *game):GameObject(game, glm::vec3(0, 0, 0)){
     
     collider.setParent(transform);
     collider.set(100);
+    
+    
 }
 
 Player::~Player(){}
@@ -21,6 +23,8 @@ void Player::init(){
     transform.setPosition(0, 0, 0);
     speed = 0;
     bLight = false;
+    
+    coins = 0;
 }
 
 void Player::update(){
@@ -84,4 +88,12 @@ void Player::toggleLight(){
 
 float Player::getSpeed(){
     return speed;
+}
+
+void Player::addCoins(int n){
+    coins += n;
+}
+
+int Player::getCoins(){
+    return coins;
 }

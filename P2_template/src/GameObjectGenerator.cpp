@@ -4,6 +4,7 @@
 #include "Road.h"
 #include "Wall.h"
 #include "Goal.h"
+#include "Coin.h"
 
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
@@ -30,4 +31,10 @@ void GameObjectGenerator::generateWorld(){
                     glm::vec3(0, roadPos.y, roadPos.z + L/2),
                            glm::vec3(W, 100, 100));
     game->addGameObject(goal);
+    
+    
+    auto coin = new Coin(game,
+        glm::vec3(0, 0, 2000),glm::vec3(50, 50, 50));
+    
+    game->addGameObject(coin);
 }
