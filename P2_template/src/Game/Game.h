@@ -10,8 +10,6 @@ class Player;
 
 class Game : public StateMachine{
     ofEasyCam cam;
-    ofLight light;
-    
     Player *player;
     GameObjectContainer *gameObjects = nullptr;
     GameObjectGenerator *generator  = nullptr;

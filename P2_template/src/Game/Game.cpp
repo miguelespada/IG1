@@ -1,18 +1,11 @@
-
-
 #include "Game.h"
 #include "Player.h"
 
-
-
 Game::Game(){
+    // TODO create settings
     ROAD_WIDTH = 2000;
     ROAD_LENGTH = 10000;
-    
-    
-    light.setPosition(200, 200, 200);
-    light.setDiffuseColor(ofColor::white);
-    
+
     generator = new GameObjectGenerator(this);
     bDebug = false;
 }
@@ -31,7 +24,6 @@ void Game::init(){
     cam.setTarget(player->transform);
     cam.setParent(player->transform);
     
-    
     gameObjects->add(player);
     generator->generateWorld();
     bPlayerFinish = false;
@@ -42,21 +34,19 @@ void Game::update(){
     gameObjects->update();
 }
 
-
 void Game::draw(){
     ofEnableLighting();
-    light.enable();
-    
     ofEnableDepthTest();
+    
     cam.begin();
     {
-        if(bDebug)
-            gameObjects->drawDebug();
-        else
-            gameObjects->draw();
-            
+        if(bDebug) gameObjects->drawDebug();
+        else gameObjects->draw();
     }
     cam.end();
+    
+    ofDisableLighting();
+    ofDisableDepthTest();
 }
 
 

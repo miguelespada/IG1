@@ -12,7 +12,7 @@
 
 class Road : public GameObject{
     
-    
+    ofLight light;
     ofPlanePrimitive plane;
 public:
     Road(Game *game, glm::vec3 pos, glm::vec3 dim);
