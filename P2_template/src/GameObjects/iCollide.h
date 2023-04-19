@@ -15,11 +15,11 @@ class iCollide{
     
         virtual void receiveCarCollision(Player *car) {};
         
-        
         ofBoxPrimitive& getCollider(){
             return collider;
         }
-        bool  collide(iCollide *other){
+        
+    bool  collide(iCollide *other){
             ofBoxPrimitive otherCollider = other->getCollider();
             glm::vec3 p0 = collider.getGlobalPosition();
             glm::vec3 d0 = collider.getSize();

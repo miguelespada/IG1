@@ -12,7 +12,6 @@
 #include "GameObject.h"
 class Game;
 
-
 // TODO add speed settings
 #define MAX_SPEED 100
 
@@ -31,7 +30,9 @@ public:
     void init();
     void update() override;
     void draw() override;
+    void drawDebug() override;
     void checkCollisions() override;
+    float getSpeed();
     
     void steerLeft();
     void steerRight();

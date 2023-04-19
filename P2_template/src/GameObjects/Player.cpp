@@ -13,8 +13,8 @@ Player::Player(Game *game):GameObject(game, glm::vec3(0, 0, 0)){
     
     collider.setParent(transform);
     collider.set(100);
-    
 }
+
 Player::~Player(){}
 
 void Player::init(){
@@ -24,7 +24,6 @@ void Player::init(){
 }
 
 void Player::update(){
-    
     prevPos = transform.getPosition();
     transform.move(transform.getZAxis() * speed);
     
@@ -43,11 +42,14 @@ void Player::draw(){
     material.begin();
     {
         collider.draw();
-        transform.transformGL();
-        ofDrawAxis(100);
-        transform.restoreTransformGL();
     }
     material.end();
+}
+void Player::drawDebug(){
+    collider.drawWireframe();
+    transform.transformGL();
+    ofDrawAxis(100);
+    transform.restoreTransformGL();
 }
 
 void Player::checkCollisions(){
@@ -56,8 +58,6 @@ void Player::checkCollisions(){
         c->receiveCarCollision(this);
     }
 }
-
-
 
 void Player::steerLeft(){
     transform.rotateDeg(1, 0, 2, 0);
@@ -81,4 +81,6 @@ void Player::toggleLight(){
     bLight = !bLight;
 }
 
-
+float Player::getSpeed(){
+    return speed;
+}

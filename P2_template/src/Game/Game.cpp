@@ -6,9 +6,8 @@
 
 
 Game::Game(){
-    // TODO move to settings
-    L = 10000;
-    W = 2000;
+    ROAD_WIDTH = 2000;
+    ROAD_LENGTH = 10000;
     
     
     light.setPosition(200, 200, 200);
@@ -36,6 +35,7 @@ void Game::init(){
     gameObjects->add(player);
     generator->generateWorld();
     bPlayerFinish = false;
+    initTime = ofGetElapsedTimef();
 }
 
 void Game::update(){
@@ -86,4 +86,8 @@ bool Game::isFinished(){
 
 void Game::setFinished(bool v){
     bPlayerFinish = v;
+}
+
+float Game::getEllapsedTime(){
+    return ofGetElapsedTimef() - initTime;
 }

@@ -17,11 +17,11 @@ class Game : public StateMachine{
     GameObjectGenerator *generator  = nullptr;
     bool bDebug;
     bool bPlayerFinish;
+    float initTime;
     
 public:
-    // TODO create getters
-    int L = 10000;
-    int W = 2000;
+    int ROAD_LENGTH;
+    int ROAD_WIDTH;
     
     Game();
     void init();
@@ -36,6 +36,6 @@ public:
     vector<GameObject *> getCollisions(GameObject *gameObject);
     void addGameObject(GameObject *gameobject);
     
-    
+    float getEllapsedTime();
 };
 #endif

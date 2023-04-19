@@ -8,8 +8,8 @@
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
 void GameObjectGenerator::generateWorld(){
-    int W = game->W;
-    int L = game->L;
+    int W = game->ROAD_WIDTH;
+    int L = game->ROAD_LENGTH;
     
     
     glm::vec3 roadPos(0, -50.1, L/2 - 1000);
