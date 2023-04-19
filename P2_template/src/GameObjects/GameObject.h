@@ -24,10 +24,6 @@ public:
     virtual void update() {};
     virtual void checkCollisions(){};
     bool isAlive();
-    
-
-   
-    
 };
 
-#endif /* GameObject_hpp */
+#endif 

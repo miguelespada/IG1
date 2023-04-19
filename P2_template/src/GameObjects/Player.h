@@ -1,5 +1,5 @@
-#ifndef Player_hpp
-#define Player_hpp
+#ifndef Player_h
+#define Player_h
 
 #include "ofMain.h"
 #include "GameObject.h"
