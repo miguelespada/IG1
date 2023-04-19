@@ -23,17 +23,15 @@ void GameObjectContainer::update(){
 }
 
 void GameObjectContainer::draw(){
-    int i = 0;
     for(auto g: gameObjects){
         if(g->isAlive()){
             g->draw();
         }
-        i++;
     }
 }
 void GameObjectContainer::drawDebug(){
     for(auto g: gameObjects){
-            g->drawDebug();
+        g->drawDebug();
     }
 }
 
