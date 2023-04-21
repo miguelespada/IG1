@@ -63,9 +63,9 @@ Si la bomba le cae cerca, pero no encima, el coche se da la vuelta debido a la o
 
 ### La carretera:
 
-En el ejemplo, la carretera tiene una extensión muy corta. Tendréis que alargarla para que cada partida dure alrededor de un minuto.
-La carretera deberá incluir giros o curvas.
+La carretera deberá ser circular, incluyendo, giros o curvas.
 Podéis añadir detalles como árboles, farolas, edificios, etc..
+Podéis añadir una cámara cenital para ver el recorrido.
 
 ### Pausa:
 
