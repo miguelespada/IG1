@@ -10,6 +10,13 @@ Game::Game(){
     bDebug = false;
 }
 
+Game::~Game(){
+    ofLogNotice() << "Deleting game";
+    delete gameObjects;
+    delete generator;
+    delete currentState();
+}
+
 void Game::init(){
     
     if(gameObjects != nullptr)
@@ -23,6 +30,7 @@ void Game::init(){
     cam.setPosition(0, 300, -600);
     cam.setTarget(player->transform);
     cam.setParent(player->transform);
+    cam.disableMouseInput();
     
     gameObjects->add(player);
     generator->generateWorld();
