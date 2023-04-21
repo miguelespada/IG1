@@ -17,7 +17,7 @@ Vamos a poner monedas distribuidas por la pista.
 Vamos a habilitar la posibilidad de que el coche dispare. Cada disparo cuesta una moneda y destruye los obstáculos.
 
 
-### Crear un obstáculo móvil:
+### Barrera:
 
 Vamos a crear un obstáculo que se mueve de arriba a abajo como si fuera una compuerta. 
 Si el coche colisiona con la compuerta, el coche se para.
@@ -32,7 +32,7 @@ Si el coche le atropella, le daremos 100 monedas al Player.
 
 ### La mancha de aceite:
 
-Usando una textura en el suelo vamos a implementar una mancha de aceite. Si el coche pisa la mancha,patinará durante los siguientes segundos (podéis usar random para mover el coche de izquierda a derecha).
+Usando una textura en el suelo vamos a implementar una mancha de aceite. Si el coche pisa la mancha, patinará durante los siguientes segundos (podéis usar random para mover el coche de izquierda a derecha).
 
 ### Tierra:
 
