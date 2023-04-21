@@ -67,9 +67,13 @@ En el ejemplo, la carretera tiene una extensión muy corta. Tendréis que alarga
 La carretera deberá incluir giros o curvas.
 Podéis añadir detalles como árboles, farolas, edificios, etc..
 
+### Pausa:
+
+Haced un State nuevo de pausa (tened en cuenta que el cronómetro se debe parar).
+
 ### Extensiones personales.
 
-Deberéis añadir al menos 2 extensiones propias.
+Deberéis añadir al menos 3 extensiones propias.
 
 ### Detalles generales
 
