@@ -47,7 +47,8 @@ Si el coche colisiona con el gancho pierde todas las monedas.
 ### El arco loco:
 
 Vamos a poner un arco con una textura animada (usando ofFbo). 
-La textura tendrá un número que cambiará aleatoriamente 
+La textura tendrá un número que cambiará aleatoriamente.
+Cuando el coche pase por debajo le dará tantas monedas como estén en la textura.
 
 
 ### El pozo:
