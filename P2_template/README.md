@@ -1,8 +1,7 @@
 # ENUNCIADO DE LA PRÁCTICA
 
 Vamos a crear un juego de coches basado en la plantilla que os he creado. Podéis modificar o extender cosas, conforme vayáis implementando las diferentes extensiones.
-Las extensiones son muy generales, vosotros deberéis cómo implementarlas y los detalles de implementación y comportamiento
-
+Las descripciones de las extensiones son muy generales, vosotros deberéis decidir sus detalles de implementación.
 
 ### Obstáculo:
 
@@ -34,6 +33,7 @@ Si el coche le atropella, le daremos 100 monedas al Player.
 ### La mancha de aceite:
 
 Usando una textura en el suelo vamos a implementar una mancha de aceite. Si el coche pisa la mancha,patinará durante los siguientes segundos (podéis usar random para mover el coche de izquierda a derecha).
+
 ### Tierra:
 
 Vamos a usar una textura en el suelo que al pasar por la misma el coche reduce su velocidad, no se frena completamente. 
@@ -50,21 +50,21 @@ Vamos a poner un arco con una textura animada (usando ofFbo).
 La textura tendrá un número que cambiará aleatoriamente 
 
 
-### El pozo.
+### El pozo:
 
 Si el coche se cae al pozo, volverá al principio.
 
 
-### El bombardero
+### El bombardero:
 
 Vamos a poner un avión que pasa volando y tira una bomba. 
 Si la bomba le cae al coche encima vuelve al principio.
 Si la bomba le cae cerca, pero no encima, el coche se da la vuelta debido a la onda expansiva. 
 
-### La carretera
+### La carretera:
 
 En el ejemplo, la carretera tiene una extensión muy corta. Tendréis que alargarla para que cada partida dure alrededor de un minuto.
-La carretera deberá incluir giros.
+La carretera deberá incluir giros o curvas.
 Podéis añadir detalles como árboles, farolas, edificios, etc..
 
 ### Extensiones personales.
@@ -73,4 +73,4 @@ Deberéis añadir al menos 2 extensiones propias.
 
 ### Detalles generales
 
-Se valorarán los detalles: el menú, tipografías, que guarde el record, efectos de sonido...
+Se valorarán los detalles: el menú, tipografías, la iluminación, que guarde el record, efectos de sonido...
