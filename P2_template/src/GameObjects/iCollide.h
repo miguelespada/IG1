@@ -22,7 +22,7 @@ class iCollide{
         return collider;
     }
         
-    bool  collide(iCollide *other){
+    bool collide(iCollide *other){
         return collider->collide(other->getCollider());
     }
 };

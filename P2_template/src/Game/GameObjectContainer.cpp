@@ -1,21 +1,32 @@
 #include "GameObjectContainer.h"
 #include "GameObject.h"
+#include "CollisionEngine.h"
 
-
-GameObjectContainer::GameObjectContainer(){}
+GameObjectContainer::GameObjectContainer(CollisionEngine *collisionEngine):
+collisionEngine(collisionEngine){
+}
 
 void GameObjectContainer::add(GameObject* g){
     gameObjects.push_back(g);
+    collisionEngine->add(g);
 }
 
 GameObjectContainer::~GameObjectContainer(){
     clear();
+    delete collisionEngine;
 }
 
 void GameObjectContainer::update(){
     for(auto g: gameObjects){
         if(g->isAlive()){
             g->update();
+        }
+    }
+    
+    collisionEngine->update();
+    
+    for(auto g: gameObjects){
+        if(g->isAlive()){
             g->checkCollisions();
         }
     }
@@ -40,8 +51,10 @@ void GameObjectContainer::removeDead(){
     for(auto g: gameObjects){
         if(g->isAlive())
             alive.push_back(g);
-        else
+        else{
+            collisionEngine->remove(g);
             delete g;
+        }
     }
     gameObjects.clear();
     gameObjects = alive;
@@ -49,18 +62,12 @@ void GameObjectContainer::removeDead(){
 
 void GameObjectContainer::clear(){
     for(auto g: gameObjects){
+        collisionEngine->remove(g);
         delete g;
     }
     gameObjects.clear();
 }
 
 vector<GameObject *> GameObjectContainer::getCollisions(GameObject *gameObject){
-    vector<GameObject *> collisions;
-    for(auto other: gameObjects){
-        if(gameObject != other && other->isAlive()){
-            if(gameObject->collide(other))
-                collisions.push_back(other);
-        }
-    }
-    return collisions;
+    return collisionEngine->getCollisions(gameObject);
 }

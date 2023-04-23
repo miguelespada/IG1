@@ -16,6 +16,8 @@ void Wall::draw(){
     material.end();
 }
 
+
+
 void  Wall::receiveCarCollision(Player *car){
     car->stop();
 }

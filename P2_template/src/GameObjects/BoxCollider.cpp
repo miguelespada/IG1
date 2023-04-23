@@ -1,5 +1,6 @@
 #include "BoxCollider.h"
 #include "GameObject.h"
+#include "ofxBullet.h"
 
 BoxCollider::BoxCollider(GameObject *gameObject):gameObject(gameObject){
     bColliding = false;
@@ -14,9 +15,8 @@ bool BoxCollider::collide(BoxCollider *other){
 
 void BoxCollider::drawDebug(){
     ofPushStyle();
-    if(bColliding)
-        ofSetColor(255, 0, 0);
     drawWireframe();
+    collisionObject->draw();
     ofPopStyle();
     
 }
