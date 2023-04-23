@@ -1,19 +1,13 @@
 #include "CollisionEngine.h"
 #include "GameObject.h"
-#include "Game.h";
+#include "Game.h"
 
-CollisionEngine::CollisionEngine(Game * game):game(game){
-    
+CollisionEngine::CollisionEngine(vector <GameObject*> &colliders):colliders(colliders){
     world.setup();
-    world.enableCollisionEvents();
- //   ofAddListener(world.COLLISION_EVENT, this,);
     world.setGravity( ofVec3f(0, 0, 0) );
     world.disableGrabbing();
-    
-    ofCamera dummy;
-    world.setCamera(&dummy);
-    
 };
+
 CollisionEngine::~CollisionEngine(){};
 
 
@@ -27,7 +21,6 @@ void CollisionEngine::add(GameObject *g){
     box->enableKinematic();
     box->activate();
     b->collisionObject = box;
-    colliders.push_back(g);
 
 };
 
@@ -45,8 +38,7 @@ void CollisionEngine::update(){
 };
 
 vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
-    collisions.clear();
-    
+    vector<GameObject *> collisions;
     struct    MyContactResultCallback : public btCollisionWorld::ContactResultCallback
         {
             bool bCollison;
@@ -75,18 +67,10 @@ vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
         }
             
     }
-        
     return collisions;
-    
 };
 
 void CollisionEngine::remove(GameObject *g){
-    for (auto it = colliders.begin(); it != colliders.end(); ++it) {
-        if (*it == g) {
-            colliders.erase(it);
-            break;
-        }
-    }
     g->getCollider()->collisionObject->remove();
 };
 

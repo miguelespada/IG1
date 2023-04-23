@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "Player.h"
-#include "CollisionEngine.h"
 
 Game::Game(){
     // TODO create settings
@@ -24,7 +23,7 @@ void Game::init(){
         delete gameObjects;
     
     
-    gameObjects = new GameObjectContainer(new CollisionEngine(this));
+    gameObjects = new GameObjectContainer();
     
     player = new Player(this);
     player->init();

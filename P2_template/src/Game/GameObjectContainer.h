@@ -12,7 +12,7 @@ class GameObjectContainer{
     vector<GameObject *> gameObjects;
     CollisionEngine *collisionEngine;
 public:
-    GameObjectContainer(CollisionEngine *collisionEngine);
+    GameObjectContainer();
     ~GameObjectContainer();
     
     void add(GameObject* g);

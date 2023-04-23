@@ -6,25 +6,20 @@
 class Game;
 class GameObject;
 
-class CollisionEngine{
-    Game *game;
-    
+class CollisionEngine{    
     void onCollision(ofxBulletCollisionData& cdata);
     ofxBulletWorldRigid            world;
-    vector <GameObject*> colliders;
+    vector <GameObject*> &colliders;
     GameObject *targetObject;
-    vector<GameObject *> collisions;
     
 public:
-    CollisionEngine(Game * game);
+    CollisionEngine(vector <GameObject*> &colliders);
     ~CollisionEngine();
     void update();
     void add(GameObject *g);
     void remove(GameObject *g);
     
     vector<GameObject *> getCollisions(GameObject *g);
-    
-    
 };
 
 #endif /* CollisionEngine_h */

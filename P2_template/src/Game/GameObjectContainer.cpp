@@ -2,8 +2,8 @@
 #include "GameObject.h"
 #include "CollisionEngine.h"
 
-GameObjectContainer::GameObjectContainer(CollisionEngine *collisionEngine):
-collisionEngine(collisionEngine){
+GameObjectContainer::GameObjectContainer(){
+    collisionEngine = new CollisionEngine(gameObjects);
 }
 
 void GameObjectContainer::add(GameObject* g){
@@ -17,6 +17,7 @@ GameObjectContainer::~GameObjectContainer(){
 }
 
 void GameObjectContainer::update(){
+
     for(auto g: gameObjects){
         if(g->isAlive()){
             g->update();
