@@ -33,22 +33,19 @@ void CollisionEngine::add(GameObject *g){
 
 void CollisionEngine::update(){
     for(auto g: colliders){
-        
         BoxCollider *b = g->getCollider();
-        
         btTransform transform;
         b->collisionObject->getRigidBody()->getMotionState()->getWorldTransform(transform);
         transform.setFromOpenGLMatrix(glm::value_ptr(b->getGlobalTransformMatrix()));
         b->collisionObject->getRigidBody()->getMotionState()->setWorldTransform(transform);
         b->setColliding(false);
-        
     }
-    
+    world.update();
+ 
 };
 
 vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
     collisions.clear();
-    world.update();
     
     struct    MyContactResultCallback : public btCollisionWorld::ContactResultCallback
         {
@@ -59,22 +56,20 @@ vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
             virtual    btScalar    addSingleResult(btManifoldPoint& cp,    const btCollisionObjectWrapper* colObj0Wrap,int partId0,int index0,const btCollisionObjectWrapper* colObj1Wrap,int partId1,int index1)
             {
                 bCollison = true;
-                return 1.f;
+                return 0;
             }
         };
 
-    
-    
     auto cw = world.getWorld()->getCollisionWorld();
     
     for(auto other: colliders){
         if(g != other){
-            MyContactResultCallback m_resultCallback;
+            MyContactResultCallback resultCallback;
             
             cw->contactPairTest(g->getCollider()->collisionObject->getCollisionObject(),
                                 other->getCollider()->collisionObject->getCollisionObject(),
-                                m_resultCallback);
-            if(m_resultCallback.bCollison){
+                                resultCallback);
+            if(resultCallback.bCollison){
                 collisions.push_back(other);
             }
         }
