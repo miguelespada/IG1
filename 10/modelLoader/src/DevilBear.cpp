@@ -29,6 +29,7 @@ DevilBear::DevilBear(){
     s2.move(0, -dist.z/3, 0);
     
     colliders.push_back(s2);
+    
 }
 
 void DevilBear::draw(){
