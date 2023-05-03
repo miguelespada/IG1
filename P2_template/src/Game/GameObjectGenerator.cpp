@@ -17,7 +17,35 @@ void GameObjectGenerator::generateWorld(){
     
     game->addGameObject(road);
     
-    int wallSize = 100;
+    
+        int wallSize = 100;
+    
+//    ofImage circuito;
+//    circuito.load("circuito.png");
+//
+//    int w = circuito.getWidth()/15;
+//    int h = circuito.getHeight()/15;
+//    circuito.resize(w, h);
+//
+//    for(int x = 0; x < w; x++){
+//        for(int y = 0; y < h; y ++){
+//            if(circuito.getColor(x, y).a > 250){
+//                auto wall = new Wall(game,
+//                                glm::vec3(x * wallSize - 5000, roadPos.y, y * wallSize - 2000),
+//                                glm::vec3(wallSize));
+//
+//                game->addGameObject(wall);
+//            }
+//        }
+//    }
+//
+    
+    
+    
+    
+    
+    
+    
     // WALL with parts
     for(int l = 0; l < L; l += wallSize){
         auto wall_r = new Wall(game,
@@ -27,7 +55,7 @@ void GameObjectGenerator::generateWorld(){
         game->addGameObject(wall_r);
     }
     
-    // WRONG wall
+//    // WRONG wall
     
     auto wall_l = new Wall(game,
                     glm::vec3(W/2, roadPos.y, roadPos.z),
