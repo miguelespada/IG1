@@ -32,6 +32,7 @@ void Game::init(){
     cam.setTarget(player->transform);
     cam.setParent(player->transform);
     cam.disableMouseInput();
+    cam.setFarClip(100000);
     
     gameObjects->add(player);
     generator->generateWorld();
