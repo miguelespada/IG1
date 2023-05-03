@@ -28,6 +28,7 @@ void GameObjectGenerator::generateWorld(){
     }
     
     // WRONG wall
+    
     auto wall_l = new Wall(game,
                     glm::vec3(W/2, roadPos.y, roadPos.z),
                            glm::vec3(wallSize, wallSize, L));
@@ -40,7 +41,7 @@ void GameObjectGenerator::generateWorld(){
     
     
     auto coin = new Coin(game,
-        glm::vec3(0, 0, 2000),glm::vec3(50, 50, 50));
+        glm::vec3(W/2, 50, 500), glm::vec3(50, 100, 50));
     
     game->addGameObject(coin);
 }

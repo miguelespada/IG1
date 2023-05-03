@@ -9,7 +9,9 @@ CollisionEngine::CollisionEngine(vector <GameObject*> &colliders):colliders(coll
     ofAddListener(world.COLLISION_EVENT, this, &CollisionEngine::onCollision);
 };
 
-CollisionEngine::~CollisionEngine(){};
+CollisionEngine::~CollisionEngine(){
+    world.destroy();
+};
 
 
 void CollisionEngine::add(GameObject *g){
@@ -33,7 +35,8 @@ void CollisionEngine::update(){
         transform.setFromOpenGLMatrix(glm::value_ptr(b->getGlobalTransformMatrix()));
         b->collisionObject->getRigidBody()->getMotionState()->setWorldTransform(transform);
     }
- 
+    
+    world.update();
 };
 
 vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
@@ -51,7 +54,6 @@ vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
         };
 
     vector<GameObject *> collisions;
-    world.update();
     auto cw = world.getWorld()->getCollisionWorld();
     
     for(auto other: colliders){

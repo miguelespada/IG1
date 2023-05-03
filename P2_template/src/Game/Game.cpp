@@ -31,7 +31,7 @@ void Game::init(){
     cam.setPosition(0, 300, -600);
     cam.setTarget(player->transform);
     cam.setParent(player->transform);
-    cam.disableMouseInput();
+    //cam.disableMouseInput();
     cam.setFarClip(100000);
     
     gameObjects->add(player);
