@@ -17,14 +17,20 @@ void GameObjectGenerator::generateWorld(){
     
     game->addGameObject(road);
     
-    auto wall_r = new Wall(game,
-                    glm::vec3(-W/2, roadPos.y, roadPos.z),
-                    glm::vec3(100, 100, L));
+    int wallSize = 100;
+    // WALL with parts
+    for(int l = 0; l < L; l += wallSize){
+        auto wall_r = new Wall(game,
+                        glm::vec3(-W/2, roadPos.y, l - 1000 + wallSize/2),
+                        glm::vec3(wallSize));
+        
+        game->addGameObject(wall_r);
+    }
     
-    game->addGameObject(wall_r);
+    // WRONG wall
     auto wall_l = new Wall(game,
                     glm::vec3(W/2, roadPos.y, roadPos.z),
-                           glm::vec3(100, 100, L));
+                           glm::vec3(wallSize, wallSize, L));
     game->addGameObject(wall_l);
     
     auto goal = new Goal(game,
