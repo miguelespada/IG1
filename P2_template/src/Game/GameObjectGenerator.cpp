@@ -18,14 +18,36 @@ void GameObjectGenerator::generateWorld(){
     
     game->addGameObject(road);
     
+    int wallSize = 100;
+   
+    ofImage circuito;
+    circuito.load("circuito.png");
+
     
-//    
-//    ofImage circuito;
-//    circuito.load("circuito.png");
-//
-//    int w = circuito.getWidth()/15;
-//    int h = circuito.getHeight()/15;
-//    circuito.resize(w, h);
+    cout << circuito.getWidth() << " " << circuito.getHeight() << endl;
+    
+    int w = circuito.getWidth()/16;
+    int h = circuito.getHeight()/16;
+    circuito.resize(w, h);
+    cout << circuito.getWidth() << " " << circuito.getHeight() << endl;
+
+    
+    for(int x = 0; x < w; x++){
+        for(int y = 0; y < h; y++){
+            if(circuito.getColor(x, y).a > 250){
+                
+                auto wall = new Wall(game,
+                                glm::vec3(x*wallSize - 5000, roadPos.y, y*wallSize -2000),
+                                glm::vec3(wallSize));
+                game->addGameObject(wall);
+            }
+        }
+    }
+    
+    
+    
+    
+
 //
 //    for(int x = 0; x < w; x++){
 //        for(int y = 0; y < h; y ++){
@@ -41,28 +63,27 @@ void GameObjectGenerator::generateWorld(){
 
     
     
-        int wallSize = 100;
     
     
     
     
     
     // WALL with parts
-    for(int l = 0; l < L; l += wallSize){
-        auto wall_r = new Wall(game,
-                        glm::vec3(-W/2, roadPos.y, l - 1000 + wallSize/2),
-                        glm::vec3(wallSize));
-
-        game->addGameObject(wall_r);
-    }
+//    for(int l = 0; l < L; l += wallSize){
+//        auto wall_r = new Wall(game,
+//                        glm::vec3(-W/2, roadPos.y, l - 1000 + wallSize/2),
+//                        glm::vec3(wallSize));
+//
+//        game->addGameObject(wall_r);
+//    }
     
     // WRONG wall
-    
-    auto wall_l = new Wall(game,
-                    glm::vec3(W/2, roadPos.y, roadPos.z),
-                           glm::vec3(wallSize, wallSize, L));
-    game->addGameObject(wall_l);
-    
+//
+//    auto wall_l = new Wall(game,
+//                    glm::vec3(W/2, roadPos.y, roadPos.z),
+//                           glm::vec3(wallSize, wallSize, L));
+//    game->addGameObject(wall_l);
+//
     auto goal = new Goal(game,
                     glm::vec3(0, roadPos.y, roadPos.z + L/2),
                            glm::vec3(W, 100, 100));
