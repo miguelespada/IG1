@@ -8,6 +8,7 @@ Game::Game(){
 
     generator = new GameObjectGenerator(this);
     bDebug = false;
+    scream.load("aaa.wav");
 }
 
 Game::~Game(){
@@ -90,4 +91,8 @@ void Game::setFinished(bool v){
 
 float Game::getEllapsedTime(){
     return ofGetElapsedTimef() - initTime;
+}
+
+void Game::doScream(){
+    scream.play();
 }

@@ -5,6 +5,7 @@
 #include "Wall.h"
 #include "Goal.h"
 #include "Coin.h"
+#include "Pedestrian.h"
 
 GameObjectGenerator::GameObjectGenerator(Game *game): game(game){}
 
@@ -18,8 +19,7 @@ void GameObjectGenerator::generateWorld(){
     game->addGameObject(road);
     
     
-        int wallSize = 100;
-    
+//    
 //    ofImage circuito;
 //    circuito.load("circuito.png");
 //
@@ -38,9 +38,10 @@ void GameObjectGenerator::generateWorld(){
 //            }
 //        }
 //    }
-//
+
     
     
+        int wallSize = 100;
     
     
     
@@ -51,11 +52,11 @@ void GameObjectGenerator::generateWorld(){
         auto wall_r = new Wall(game,
                         glm::vec3(-W/2, roadPos.y, l - 1000 + wallSize/2),
                         glm::vec3(wallSize));
-        
+
         game->addGameObject(wall_r);
     }
     
-//    // WRONG wall
+    // WRONG wall
     
     auto wall_l = new Wall(game,
                     glm::vec3(W/2, roadPos.y, roadPos.z),
@@ -68,8 +69,14 @@ void GameObjectGenerator::generateWorld(){
     game->addGameObject(goal);
     
     
-    auto coin = new Coin(game,
-        glm::vec3(W/2, 50, 500), glm::vec3(50, 100, 50));
+//    auto coin = new Coin(game,
+//        glm::vec3(W/2, 50, 500), glm::vec3(50, 100, 50));
+//    
+//    game->addGameObject(coin);
     
-    game->addGameObject(coin);
+    
+    auto pedestrian = new Pedestrian(game,
+        glm::vec3(W/2 - 100, -25, 500), glm::vec3(50, 150, 50));
+
+    game->addGameObject(pedestrian);
 }
