@@ -6,7 +6,8 @@ CollisionEngine::CollisionEngine(vector <GameObject*> &colliders):colliders(coll
     world.setup();
     world.setGravity( ofVec3f(0, 0, 0) );
     world.disableGrabbing();
-    ofAddListener(world.COLLISION_EVENT, this, &CollisionEngine::onCollision);
+    world.disableCollisionEvents();
+    
 };
 
 CollisionEngine::~CollisionEngine(){
@@ -22,21 +23,27 @@ void CollisionEngine::add(GameObject *g){
     box->setActivationState( DISABLE_DEACTIVATION );
     box->add();
     box->enableKinematic();
-    box->activate();
+    if(!g->isFixed)
+        box->activate();
     b->collisionObject = box;
-
+    updateObject(g);
+    
 };
+
+void CollisionEngine::updateObject(GameObject *g){
+    BoxCollider *b = g->getCollider();
+    btTransform transform;
+    b->collisionObject->getRigidBody()->getMotionState()->getWorldTransform(transform);
+    transform.setFromOpenGLMatrix(glm::value_ptr(b->getGlobalTransformMatrix()));
+    b->collisionObject->getRigidBody()->getMotionState()->setWorldTransform(transform);
+}
 
 void CollisionEngine::update(){
     for(auto g: colliders){
-        BoxCollider *b = g->getCollider();
-        btTransform transform;
-        b->collisionObject->getRigidBody()->getMotionState()->getWorldTransform(transform);
-        transform.setFromOpenGLMatrix(glm::value_ptr(b->getGlobalTransformMatrix()));
-        b->collisionObject->getRigidBody()->getMotionState()->setWorldTransform(transform);
+        if(g->isFixed) continue;
+        updateObject(g);
     }
-    
-    world.update();
+    world.update(0.1, 1);
 };
 
 vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
@@ -74,9 +81,7 @@ vector<GameObject *> CollisionEngine::getCollisions(GameObject *g){
 
 void CollisionEngine::remove(GameObject *g){
     g->getCollider()->collisionObject->remove();
+
 };
 
 
-void  CollisionEngine::onCollision(ofxBulletCollisionData& cdata){
-   
-}

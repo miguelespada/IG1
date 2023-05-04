@@ -15,7 +15,7 @@ Pedestrian::Pedestrian(Game *game, glm::vec3 pos, glm::vec3 dim): GameObject(gam
     model.playAllAnimations();
     
     transform.rotateDeg(90, 0, 1, 0);
-    speed = 3;
+    speed = 6;
     bTurned = false;
 }
 Pedestrian::~Pedestrian(){
