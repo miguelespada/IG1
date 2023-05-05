@@ -24,7 +24,7 @@ void Coin::draw(){
     
     material.begin();
     {
-        collider->drawWireframe();
+        collider->draw();
     }
     material.end();
 }

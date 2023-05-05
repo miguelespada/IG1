@@ -22,7 +22,7 @@ void GameObjectGenerator::generateWorld(){
 //
 //    ofImage circuito;
 //    circuito.load("circuito.png");
-
+//
 //    int w = circuito.getWidth()/16;
 //    int h = circuito.getHeight()/16;
 //    circuito.resize(w, h);
@@ -46,10 +46,10 @@ void GameObjectGenerator::generateWorld(){
         auto wall_r = new Wall(game,
                         glm::vec3(-W/2, roadPos.y, l - 1000 + wallSize/2),
                         glm::vec3(wallSize));
-        
+
         wall_r->isFixed = true;
         game->addGameObject(wall_r);
-        
+
     }
     
 //     WRONG wall
@@ -66,10 +66,10 @@ void GameObjectGenerator::generateWorld(){
     game->addGameObject(goal);
     
     
-//    auto coin = new Coin(game,
-//        glm::vec3(W/2, 50, 500), glm::vec3(50, 100, 50));
-//    
-//    game->addGameObject(coin);
+    auto coin = new Coin(game,
+        glm::vec3(0, -25, 500), glm::vec3(50));
+    
+    game->addGameObject(coin);
     
     
     auto pedestrian = new Pedestrian(game,
