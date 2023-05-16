@@ -12,7 +12,7 @@ CollisionEngine::CollisionEngine(vector <GameObject*> &colliders):colliders(coll
 };
 
 CollisionEngine::~CollisionEngine(){
-    world.destroy();
+  //  world.destroy();
 };
 
 

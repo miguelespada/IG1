@@ -8,7 +8,7 @@ Game::Game(){
 
     generator = new GameObjectGenerator(this);
     bDebug = false;
-    scream.load("aaa.wav");
+    scream.load("female_scream.wav");
 }
 
 Game::~Game(){

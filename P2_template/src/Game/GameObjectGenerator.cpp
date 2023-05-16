@@ -88,8 +88,10 @@ void GameObjectGenerator::generateWorld(){
     game->addGameObject(coin);
     
     
-    auto pedestrian = new Pedestrian(game,
-        glm::vec3(W/2 - 100, -25, 500), glm::vec3(50, 150, 50));
+    for(int i = 0; i < 10; i ++ ){
+        auto pedestrian = new Pedestrian(game,
+            glm::vec3(W/2 - 100 - 25*i, -25, 300*(i+1)), glm::vec3(50, 150, 50));
 
-    game->addGameObject(pedestrian);
+        game->addGameObject(pedestrian);
+    }
 }
