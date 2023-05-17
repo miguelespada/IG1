@@ -2,24 +2,22 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    model.loadModel("shuttle.obj");
+    model.loadModel("shuttle.fbx");
     light.setPosition(0, 500, 500);
     transform.rotateDeg(-90, 1, 0, 0);
     collider.setParent(transform);
     
-    float modelScale = model.getNormalizedScale();
-    glm::vec3 minPoint = model.getSceneMin();
-    glm::vec3 maxPoint = model.getSceneMax();
-    glm::vec3 modelSize = (minPoint - maxPoint) * modelScale * glm::vec3(1, 0.6, 0.6);
-    collider.set(modelSize.x, modelSize.y, modelSize.z);
-    glm::vec3 center = model.getSceneCenter() * modelScale ;
-    collider.setPosition(center);
+    model.setScale(0.005, 0.005, 0.005);
+    model.setRotation(0, 90, 1, 0, 0);
+    collider.set(200, 200, 50);
+    
+    collider.setPosition(0, -30, 0);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    transform.move(1, 0, 0);
-    transform.rotateDeg(0.1, 1, 0, 0);
+   // transform.move(1, 0, 0);
+   // transform.rotateDeg(0.1, 1, 0, 0);
 }
 
 //--------------------------------------------------------------
